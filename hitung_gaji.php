@@ -144,6 +144,7 @@
       let tunjangan = document.getElementById('tunjangan').value;
       let ratelembur = parseInt(gapok)/173;
       let potonganbpjs = (parseInt(gapok)+parseInt(tunjangan))*0.03;
+      
       if (!isNaN(ratelembur)) {
          document.getElementById('upahlembur').value = Math.round(ratelembur);
       }
