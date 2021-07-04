@@ -4,7 +4,7 @@
     //session
 	if(!empty($_SESSION['ADMIN'])){ }else{ header('location:login.php'); }
     // panggil file
-    require 'functions/panggil.php';
+    require '../functions/panggil.php';
     
     // tampilkan form edit
     $idGet = strip_tags($_GET['id']);
