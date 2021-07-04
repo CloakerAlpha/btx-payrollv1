@@ -104,7 +104,10 @@
 								</div>
                                 <div class="form-group">
 									<label>NWNP</label>
-									<input type="text" value="" class="form-control" name="nwnp">
+									<input type="text" value="" class="form-control" 
+                                    id="nwnp"
+                                    name="nwnp"
+                                    onkeyup="hitung();">
 
 								</div>
                                 <div class="form-group">
@@ -114,7 +117,10 @@
 								</div>
                                 <div class="form-group">
 									<label>Gaji Total</label>
-									<input type="text" value="" class="form-control" name="gajitotal">
+									<input type="text" value="" class="form-control" 
+                                    id="gajitotal"
+                                    name="gajitotal"
+                                    onkeyup="hitung();">
 
 								</div>
 								
@@ -147,6 +153,7 @@
       let gapok = document.getElementById('gapok').value;
       let jamlembur = document.getElementById('jamlembur').value;
       let tunjangan = document.getElementById('tunjangan').value;
+      let nwnp = document.getElementById('nwnp').value;
       let ratelembur = parseInt(gapok)/173;
       let potonganbpjs = (parseInt(gapok)+parseInt(tunjangan))*0.03;
 
@@ -154,14 +161,14 @@
       if (!isNaN(ratelembur)) {
          document.getElementById('upahlembur').value = Math.round(ratelembur);
       }
-
-      if (jamlembur<5){
-          totaljam = jamlembur*1;
-      } else {
-          totaljam = jamlembur*2;
-      }
-       totallembur = parseInt(totaljam)*ratelembur;
-
+////////////////////
+            if (parseInt(jamlembur)<5){
+                totaljam = parseInt(jamlembur)*1;
+            } else {
+                totaljam = parseInt(jamlembur)*2;
+            }
+            totallembur = parseInt(totaljam)*parseInt(ratelembur);
+////////////////////
       if (!isNaN(totallembur)) {
          document.getElementById('total_lembur').value = Math.round(totallembur);
       }
@@ -169,6 +176,17 @@
       if (!isNaN(potonganbpjs)) {
          document.getElementById('bpjs').value = potonganbpjs;
       }
+      
+      // - potongan NWNP = jumlah hari tidak hadir (non hari libur) x gaji pokok / 30
+      potongan_nwnp = (parseInt(nwnp)*parseInt(gapok))/30;
+
+      // Total gaji perbulan = Gaji pokok + Tunjangan tetap + Upah lembur - Potongan NWNP - Potongan BPJS
+      gajitotal = parseInt(gapok)+parseInt(tunjangan)+parseInt(totallembur)-parseInt(potongan_nwnp)-parseInt(potonganbpjs);
+
+      if (!isNaN(gajitotal)) {
+         document.getElementById('gajitotal').value = gajitotal;
+      }
+
     }
 </script>
 </html>
