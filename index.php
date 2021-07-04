@@ -99,9 +99,6 @@
                                             <a href="hitung_gaji.php?id=<?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md">                                            
                                             <span class="fa fa-calculator"></span></a>
 
-                                            <a href="cetak.php?id=<?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md">                                            
-                                            <span class="fa fa-print"></span></a>
-
                                             <a onclick="return confirm('Apakah yakin data akan di hapus?')" href="functions/crud.php?aksi=hapus&hapusid=<?php echo $datapegawai['id_pegawai'];?>" 
                                             class="btn btn-delete btn-md"><span class="fa fa-trash"></span></a>
                                         </td>
