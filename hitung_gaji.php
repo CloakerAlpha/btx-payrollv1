@@ -86,17 +86,20 @@
 								</div>
                                 <div class="form-group">
                                     <label>Upah Lembur Per Jam</label>
-									<input type="number" value="" class="form-control upahlembur" id="upahlembur" name="upah_lembur" onkeyup="hitung();">
+									<input type="number" value="" class="form-control upahlembur" 
+                                    id="upahlembur" name="upah_lembur" onkeyup="hitung();">
 
 								</div>
                                 <div class="form-group">
 									<label>Jam Lembur</label>
-									<input type="text" value="" class="form-control jamlembur"  id="jamlembur" name="jam_lembur">
+									<input type="text" value="" class="form-control jamlembur" 
+                                    id="jamlembur" name="jam_lembur"onkeyup="hitung();">
 
 								</div>
                                 <div class="form-group"  id="totallembur">
 									<label>Total Upah Lembur</label>
-									<input type="text" value="" class="form-control totalupahlembur" name="total_lembur">
+									<input type="text" value="" class="form-control totalupahlembur" 
+                                    id="total_lembur" name="total_lembur"onkeyup="hitung();">
 
 								</div>
                                 <div class="form-group">
@@ -126,10 +129,10 @@
 	</body>
     <script>
     window.onload = function hitung() {
-      var gapok = document.getElementById('gapok').value;
-      var jamlembur = document.getElementById('jamlembur').value;
+      let gapok = document.getElementById('gapok').value;
+      let jamlembur = document.getElementById('jamlembur').value;
       let tunjangan = document.getElementById('tunjangan').value;
-      var ratelembur = parseInt(gapok)/173;
+      let ratelembur = parseInt(gapok)/173;
       let potonganbpjs = parseInt(gapok)+parseInt(tunjangan);
       if (!isNaN(ratelembur)) {
          document.getElementById('upahlembur').value = Math.round(ratelembur);
@@ -138,16 +141,31 @@
          document.getElementById('bpjs').value = potonganbpjs;
       }
     }
+    
     window.onkeyup = function hitung() {
+      let totaljam=1;
       let gapok = document.getElementById('gapok').value;
       let jamlembur = document.getElementById('jamlembur').value;
       let tunjangan = document.getElementById('tunjangan').value;
       let ratelembur = parseInt(gapok)/173;
       let potonganbpjs = (parseInt(gapok)+parseInt(tunjangan))*0.03;
-      
+
+    
       if (!isNaN(ratelembur)) {
          document.getElementById('upahlembur').value = Math.round(ratelembur);
       }
+
+      if (jamlembur<5){
+          totaljam = jamlembur*1;
+      } else {
+          totaljam = jamlembur*2;
+      }
+       totallembur = parseInt(totaljam)*ratelembur;
+
+      if (!isNaN(totallembur)) {
+         document.getElementById('total_lembur').value = Math.round(totallembur);
+      }
+
       if (!isNaN(potonganbpjs)) {
          document.getElementById('bpjs').value = potonganbpjs;
       }
