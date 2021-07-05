@@ -2,15 +2,9 @@
     // session start
     if(!empty($_SESSION)){ }else{ session_start(); }
     //session
-<<<<<<< HEAD
 	if(!empty($_SESSION['ADMIN'])){ }else{ header('location:login.php'); }
     // panggil file
     require 'functions/panggil.php';
-=======
-	if(!empty($_SESSION['SUPER'])){ }else{ header('location:login.php'); }
-    // panggil file
-    require 'functions/panggil_superv.php';
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
     
     // tampilkan form edit
     $idGet = strip_tags($_GET['id']);
@@ -18,19 +12,11 @@
 ?>
 
 <style>
-<<<<<<< HEAD
     .btn-updatedata{
         background-color: #323232;
         color: #fff;
     }
     .btn-kembali{
-=======
-    .btn-updategaji{
-        background-color: #323232;
-        color: #fff;
-    }
-    .btn-kembali, .btn-printgaji{
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
         background-color: #ffac41;
         color: #323232;
     }
@@ -38,42 +24,22 @@
         background-color: #fff;
         color: #323232;
     }
-<<<<<<< HEAD
-=======
-    .btn-refresh{
-        background-color:darkgreen;
-        color: #fff;
-    }
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
 </style>
 
 <!DOCTYPE HTML>
 <html>
 	<head>
-<<<<<<< HEAD
 		<title>Cek Data Pegawai</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-=======
-		<title>Perhitungan Gaji</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css">
-		<link rel="stylesheet" href="css/all.min.css">
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
 	</head>
     <body style="background: #323232;;">
 		<div class="container">
 			<br/>
-<<<<<<< HEAD
             <span style="color:#fff";>Akun : <?php echo $sesi['username'];?></span>
 			<div class="float-right">	
 				<a href="superpage.php" class="btn btn-kembali btn-md" style="margin-right:1pc;"><span class="fa fa-home"></span> Kembali</a> 
 				<a href="logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
-=======
-            <span style="color:#fff";>Selamat Datang, <?php echo $sesi['namalengkap'];?></span>
-			<div class="float-right">	
-				<a href="superpage.php" class="btn btn-kembali btn-md" style="margin-right:1pc;"><span class="fa fa-home"></span> Kembali</a> 
-				<a href="logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-power-off"></span> Logout</a>
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
 			</div>		
 			<br/><br/><br/>
 			<div class="row">
@@ -82,17 +48,17 @@
 					<br/>
 					<div class="card">
 						<div class="card-header">
-<<<<<<< HEAD
 						<h4 class="card-title">Cek Data Pegawai - <?php echo $hasil['namapegawai'];?></h4>
-=======
-						<h4 class="card-title">Perhitungan Gaji Pegawai - <?php echo $hasil['namapegawai'];?></h4>
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
 						</div>
 						<div class="card-body">
 						<!-- form berfungsi mengirimkan data input 
 						dengan method post ke proses crud dengan paramater get aksi edit -->
 <<<<<<< HEAD
+<<<<<<< HEAD
 							<form action="functions/crud.php?aksi=edit" method="POST">
+=======
+							<form action="functions/crud.php?aksi=cek" method="POST">
+>>>>>>> 15th
 								<div class="form-group">
 									<label>Nama </label>
 									<input type="text" value="<?php echo $hasil['namapegawai'];?>" class="form-control" name="namapegawai" readonly>
