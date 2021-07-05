@@ -12,42 +12,45 @@
 ?>
 
 <style>
+    .bg_close{
+        text-align: center;
+        padding: 5px;
+        background-color: #ffac41;
+        width: auto;
+    }
     .modal{
+        border-radius: 10px;
         display: none; /* Hidden by default */
         position: fixed; /* Stay in place */
         z-index: 1; /* Sit on top */
         padding-top: 100px; /* Location of the box */
         left: 0;
         top: 0;
-        width: 100%; /* Full width */
+        width: 100%;
         height: 100%; /* Full height */
         overflow: auto; /* Enable scroll if needed */
         background-color: rgb(0,0,0); /* Fallback color */
         background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
     /* Modal Content */
-    .modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+    .modal-con {
+        border-radius: 10px;
+        align-items: center;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%;
     }
 
     /* The Close Button */
     .close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
     }
 
-    .close:hover,
-    .close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-    }
     .btn-updategaji{
         background-color: #323232;
         color: #fff;
@@ -191,9 +194,13 @@
 
                 <div id="myModal" class="modal">
 
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <p>OOPS, DATA BELUM SAH. SILAHKAN MENGHUBUNGI SUPERVISOR</p>
+                    <div class="modal-con">
+                        <p style="text-align: center;">OOPS, DATA BELUM SAH. SILAHKAN MENGHUBUNGI SUPERVISOR</p>
+
+                        <div class="bg_close">
+                            <!-- <i class="fa fa-window-close"></i> --> 
+                            <span style="font-weight: bolder;"> TUTUP </span>
+                        </div>
                     </div>
 
                     </div>
@@ -255,31 +262,31 @@
       if (!isNaN(gajitotal)) {
          document.getElementById('gajitotal').value = gajitotal;
       }
-
     }
 
     function printPage() {
+
         let status = document.getElementById('status').value;
         let modal = document.getElementById('myModal');
             // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
+            var closemodal = document.getElementsByClassName("modal-con")[0];
             // When the user clicks on <span> (x), close the modal
-                span.onclick = function() {
-                 modal.style.display = "none";
+                closemodal.onclick = function() {
+                    modal.style.display = "none";
                 }
-
         if (status=='pending'){
-            modal.style.display = "block";
+            modal.style.display = "inline-block";
         }else{
             window.print();
         }
-   }
+    }
 
     function modePrint() {
+
         document.getElementById("totallembur").style.display = 'none';
         document.getElementById("jam_lembur").style.display = 'none';
         document.getElementById("upahlemburperjam").style.display = 'none';
       
-   }
+    }
 </script>
 </html>
