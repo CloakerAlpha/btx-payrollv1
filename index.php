@@ -1,27 +1,17 @@
 <?php
     // session start
     if(!empty($_SESSION)){ }else{ session_start(); }
-<<<<<<< HEAD
     // panggil file
-=======
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
     require 'functions/panggil.php';
 ?>
 
 <style>
     .session_container{
-<<<<<<< HEAD
         text-align: center;
         width: auto;
         padding: 10px;
         border-radius: 10px;
         margin: 10px;
-=======
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        width: max-content;
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
         background-color: #ffac41;
         color: #323232;
     }
@@ -37,10 +27,7 @@
         color: #323232;
     }
     .btn-logout{
-<<<<<<< HEAD
         margin: 10px;
-=======
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
         background-color: #fff;
         color: #323232;
     }
@@ -77,7 +64,6 @@
                     <?php if(!empty($_SESSION['ADMIN'])){?>
                     <br/>
                     <div class="session_container">
-<<<<<<< HEAD
                         <div>
                             <span >Akun : </span>
                             <span id="usertype" style="color:#fff";><?php echo $sesi['username'];?></span>
@@ -88,14 +74,6 @@
                         <a href="tambah.php" class="btn btn-tambah btn-md" id="btn-tambah"><span class="fa fa-plus"></span> Tambah Data </a>
                         </div>
 
-=======
-                        <span >Selamat Datang, </span>
-                        <span id="usertype" style="color:#fff";><?php echo $sesi['username'];?></span>
-                    </div>
-                    <a href="logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-power-off"></span> Logout</a>
-                    <div>
-                    <a href="tambah.php" class="btn btn-tambah btn-md" id="btn-tambah"><span class="fa fa-plus"></span> Tambah</a>
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
                     </div>
                    
                     <br/>
@@ -169,11 +147,7 @@
 		</div>
         <script>
             $('#mytable').dataTable();
-<<<<<<< HEAD
 /*            tipe ='user';
-=======
-            tipe ='user';
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
             window.onload = function checkuser() {
                 let tipe = document.getElementById("usertype").innerText;
                 if (tipe == 'admin'){
@@ -182,11 +156,7 @@
                     document.getElementById("btn-tambah").style.display = 'none';
                 }
 
-<<<<<<< HEAD
             };*/
-=======
-            };
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
             
         </script>
 	</body>
