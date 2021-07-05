@@ -1,27 +1,12 @@
 <?php
-//koneksi db
-require 'panggil.php';
+    require 'panggil.php';
 
 // proses persetujuan supervisor
-if(!empty($_GET['aksi'] == 'edit'))
+if(!empty($_GET['aksi'] == 'cek'))
 {
-    $nama = strip_tags($_POST['namapegawai']);
-    $tempatlahir = strip_tags($_POST['tempat_lahir']);
-    $tanggallahir = strip_tags($_POST['tanggal_lahir']);
-    $jeniskelamin = strip_tags($_POST['jenis_kelamin']);
-    $jabatan = strip_tags($_POST['jabatan']);
-    $gapok = strip_tags($_POST['gapok']);
-    $tunjangan = strip_tags($_POST['tunjangan']);
     $status = strip_tags($_POST['status']);
 
         $data = array(
-            'namapegawai'		=>$nama,
-            'tempat_lahir'		=>$tempatlahir,
-            'tanggal_lahir' 	=>$tanggallahir,
-            'jenis_kelamin'		=>$jeniskelamin,
-            'jabatan'			=>$jabatan,
-            'gapok'		        =>$gapok,
-            'tunjangan'			=>$tunjangan,
             'status'	    	=>$status
         );
 
