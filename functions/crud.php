@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 //koneksi db
 require 'panggil.php';
 
@@ -31,6 +32,9 @@ if(!empty($_GET['aksi'] == 'edit'))
     $proses->edit_data($tabel,$data,$where,$id);
     echo '<script>alert("Edit Data Berhasil");window.location="../superpage.php"</script>';
 }
+=======
+    require 'panggil.php';
+>>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
 
 // proses hitung
 if(!empty($_GET['aksi'] == 'hitung'))
@@ -133,6 +137,7 @@ if(!empty($_GET['aksi'] == 'edit'))
 
         if($result != 'gagal')
         {
+<<<<<<< HEAD
                 // status yang diberikan 
                 session_start();
                 $_SESSION['ADMIN'] = $result;
@@ -141,6 +146,21 @@ if(!empty($_GET['aksi'] == 'edit'))
                 } else if($user=='supervisor'){
                     echo "<script>window.location='../superpage.php';</script>";
                 }
+=======
+            if($user=='admin'){
+                // status yang diberikan 
+                session_start();
+                $_SESSION['ADMIN'] = $result;
+                // status yang diberikan 
+                echo "<script>window.location='../index.php';</script>";
+            }else if($user=='supervisor'){
+                // status yang diberikan 
+                session_start();
+                $_SESSION['SUPER'] = $result;
+                // status yang diberikan 
+                echo "<script>window.location='../supervisor/superpage.php';</script>";
+            }
+>>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
             
         }else{
             echo "<script>window.location='../login.php?get=gagal';</script>";

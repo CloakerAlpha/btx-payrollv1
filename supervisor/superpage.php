@@ -1,27 +1,18 @@
 <?php
     // session start
     if(!empty($_SESSION)){ }else{ session_start(); }
-<<<<<<< HEAD
+    //session
+	if(!empty($_SESSION['SUPER'])){ }else{ header('location:login.php'); }
     // panggil file
-=======
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
-    require 'functions/panggil.php';
+    require '../functions/panggil_superv.php';
 ?>
 
 <style>
     .session_container{
-<<<<<<< HEAD
-        text-align: center;
-        width: auto;
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-=======
         padding: 10px;
         border-radius: 10px;
         margin: 10px;
         width: max-content;
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
         background-color: #ffac41;
         color: #323232;
     }
@@ -29,18 +20,7 @@
         background-color: #ffac41;
         color: #323232;
     }
-    .btn-tambah{
-        padding: 10px;
-        border-radius: 10px;
-        margin: 10px;
-        background-color: #ffac41;
-        color: #323232;
-    }
     .btn-logout{
-<<<<<<< HEAD
-        margin: 10px;
-=======
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
         background-color: #fff;
         color: #323232;
     }
@@ -55,18 +35,18 @@
 	<head>
 		<title>Payroll App BTX1</title>
 		<!-- BOOTSTRAP 4-->
-        <link rel="stylesheet" href="css/bs1.css">
+        <link rel="stylesheet" href="../css/bs1.css">
         <!-- DATATABLES BS 4-->
-        <link rel="stylesheet" href="css/bs2_datatables.css" />
+        <link rel="stylesheet" href="../css/bs2_datatables.css" />
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="css/all.min.css">
+        <link rel="stylesheet" href="../css/all.min.css">
 
         <!-- jQuery -->
-        <script type="text/javascript" src="js/bs4_jquery.js"></script>
+        <script type="text/javascript" src="../js/bs4_jquery.js"></script>
         <!-- DATATABLES BS 4-->
-        <script src="js/bs5_datatables.js"></script>
+        <script src="../js/bs5_datatables.js"></script>
         <!-- BOOTSTRAP 4-->
-        <script src="js/bs6_databalesmin.js"></script>
+        <script src="../js/bs6_databalesmin.js"></script>
 
 	</head>
     <body style="background:#323232;">
@@ -74,31 +54,16 @@
 			<div class="row">
 				<div class="base_bg" style="align-content: center;width: auto;">
 
-                    <?php if(!empty($_SESSION['ADMIN'])){?>
+                    <?php if(!empty($_SESSION['SUPER'])){?>
                     <br/>
                     <div class="session_container">
-<<<<<<< HEAD
-                        <div>
-                            <span >Akun : </span>
-                            <span id="usertype" style="color:#fff";><?php echo $sesi['username'];?></span>
-                        </div>
-                            <a href="logout.php" class="btn btn-logout btn-md"><span class="fa fa-power-off"></span> Logout</a>
-                    </div>
-                        <div style="text-align: center;">
-                        <a href="tambah.php" class="btn btn-tambah btn-md" id="btn-tambah"><span class="fa fa-plus"></span> Tambah Data </a>
-                        </div>
-
-=======
                         <span >Selamat Datang, </span>
                         <span id="usertype" style="color:#fff";><?php echo $sesi['username'];?></span>
                     </div>
-                    <a href="logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-power-off"></span> Logout</a>
-                    <div>
-                    <a href="tambah.php" class="btn btn-tambah btn-md" id="btn-tambah"><span class="fa fa-plus"></span> Tambah</a>
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
-                    </div>
-                   
-                    <br/>
+                    
+                    <a href="../logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-power-off"></span> Logout</a>
+                    <br/><br/>
+                    <br/><br/>
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Data Pegawai</h4>
@@ -138,10 +103,8 @@
                                         <td><?php echo $datapegawai['gajitotal'];?></td>
                                         <td><?php echo $datapegawai['status'];?></td>
                                         <td style="text-align: center;">
-                                            <a href="edit.php?id=<?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md btn_edit">                                            
-                                            <span class="fa fa-edit" ></span></a>
 
-                                            <a href="hitung_gaji.php?id=<?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md">                                            
+                                            <a href="../review_data.php?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md">                                            
                                             <span class="fa fa-calculator"></span></a>
 
                                             <a onclick="return confirm('Apakah yakin data akan di hapus?')" href="functions/crud.php?aksi=hapus&hapusid=<?php echo $datapegawai['id_pegawai'];?>" 
@@ -161,7 +124,7 @@
                         <div class="alert alert-info">
                             <h3> Maaf Anda Belum Dapat Akses CRUD, Silahkan Login Terlebih Dahulu !</h3>
                             <hr/>
-                            <p><a href="login.php">Login Disini</a></p>
+                            <p><a href="../login.php">Login Disini</a></p>
                         </div>
                     <?php }?>
 			    </div>
@@ -169,24 +132,6 @@
 		</div>
         <script>
             $('#mytable').dataTable();
-<<<<<<< HEAD
-/*            tipe ='user';
-=======
-            tipe ='user';
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
-            window.onload = function checkuser() {
-                let tipe = document.getElementById("usertype").innerText;
-                if (tipe == 'admin'){
-                    document.getElementById("btn-tambah").style.display = '';
-                } else{
-                    document.getElementById("btn-tambah").style.display = 'none';
-                }
-
-<<<<<<< HEAD
-            };*/
-=======
-            };
->>>>>>> cb9cad832017d29aada16e26a9ca05fd040ae14e
             
         </script>
 	</body>
