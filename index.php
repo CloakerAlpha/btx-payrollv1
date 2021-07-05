@@ -5,11 +5,22 @@
 ?>
 
 <style>
+    .session_container{
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+        width: max-content;
+        background-color: #ffac41;
+        color: #323232;
+    }
     .btn-edit{
         background-color: #ffac41;
         color: #323232;
     }
     .btn-tambah{
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
         background-color: #ffac41;
         color: #323232;
     }
@@ -49,12 +60,16 @@
 
                     <?php if(!empty($_SESSION['ADMIN'])){?>
                     <br/>
-                    <span style="color:#fff";>Selamat Datang, </span>
-                    <span id="usertype" style="color:#fff";><?php echo $sesi['username'];?></span>
+                    <div class="session_container">
+                        <span >Selamat Datang, </span>
+                        <span id="usertype" style="color:#fff";><?php echo $sesi['username'];?></span>
+                    </div>
                     <a href="logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-power-off"></span> Logout</a>
-                    <br/><br/>
+                    <div>
                     <a href="tambah.php" class="btn btn-tambah btn-md" id="btn-tambah"><span class="fa fa-plus"></span> Tambah</a>
-                    <br/><br/>
+                    </div>
+                   
+                    <br/>
                     <div class="card">
                         <div class="card-header">
                             <h4 class="card-title">Data Pegawai</h4>
@@ -94,8 +109,8 @@
                                         <td><?php echo $datapegawai['gajitotal'];?></td>
                                         <td><?php echo $datapegawai['status'];?></td>
                                         <td style="text-align: center;">
-                                            <a href="edit.php?id=<?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md">                                            
-                                            <span class="fa fa-edit"></span></a>
+                                            <a href="edit.php?id=<?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md btn_edit">                                            
+                                            <span class="fa fa-edit" ></span></a>
 
                                             <a href="hitung_gaji.php?id=<?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md">                                            
                                             <span class="fa fa-calculator"></span></a>
@@ -125,15 +140,15 @@
 		</div>
         <script>
             $('#mytable').dataTable();
-            tipe ='aaaa';
+            tipe ='user';
             window.onload = function checkuser() {
                 let tipe = document.getElementById("usertype").innerText;
-                console.log(tipe);
                 if (tipe == 'admin'){
                     document.getElementById("btn-tambah").style.display = '';
                 } else{
                     document.getElementById("btn-tambah").style.display = 'none';
                 }
+
             };
             
         </script>

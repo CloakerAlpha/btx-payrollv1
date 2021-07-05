@@ -51,9 +51,7 @@
                             <button type="submit" name="proses_login" class="btn btn-primary btn-block"> Login  </button>
                         </div> <!-- form-group// -->                                                           
                     </form>
-                        <div class="form-group">
-                            <a href="index.php" style="color: #323232;"> Kembali ke Home  </a>
-                        </div> <!-- form-group//-->
+                        
                 </div>
             </div>
             <div class="col-sm-4">

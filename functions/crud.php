@@ -99,15 +99,25 @@ if(!empty($_GET['aksi'] == 'edit'))
         $pass = strip_tags($_POST['pass']);
         // panggil fungsi proses_login() yang ada di class prosesCrud()
         $result = $proses->proses_login($user,$pass);
-        if($result == 'gagal')
+
+        if($result != 'gagal')
         {
-            echo "<script>window.location='../login.php?get=gagal';</script>";
+            if($user=='admin'){
+                // status yang diberikan 
+                session_start();
+                $_SESSION['ADMIN'] = $result;
+                // status yang diberikan 
+                echo "<script>window.location='../index.php';</script>";
+            }else if($user=='supervisor'){
+                // status yang diberikan 
+                session_start();
+                $_SESSION['SUPER'] = $result;
+                // status yang diberikan 
+                echo "<script>window.location='../supervisor/superpage.php';</script>";
+            }
+            
         }else{
-            // status yang diberikan 
-            session_start();
-            $_SESSION['ADMIN'] = $result;
-            // status yang diberikan 
-            echo "<script>window.location='../index.php';</script>";
+            echo "<script>window.location='../login.php?get=gagal';</script>";
         }
     }
 ?>

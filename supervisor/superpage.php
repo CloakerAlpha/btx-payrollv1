@@ -2,21 +2,21 @@
     // session start
     if(!empty($_SESSION)){ }else{ session_start(); }
     //session
-	if(!empty($_SESSION['ADMIN'])){ }else{ header('location:login.php'); }
+	if(!empty($_SESSION['SUPER'])){ }else{ header('location:login.php'); }
     // panggil file
-    require '../functions/panggil.php';
-    
-    // tampilkan form edit
-    $idGet = strip_tags($_GET['id']);
-    $hasil = $proses->tampil_data_id('pegawai','id_pegawai',$idGet);
+    require '../functions/panggil_superv.php';
 ?>
 
 <style>
-    .btn-updatedata{
-        background-color: #323232;
-        color: #fff;
+    .session_container{
+        padding: 10px;
+        border-radius: 10px;
+        margin: 10px;
+        width: max-content;
+        background-color: #ffac41;
+        color: #323232;
     }
-    .btn-kembali{
+    .btn-edit{
         background-color: #ffac41;
         color: #323232;
     }
@@ -24,78 +24,115 @@
         background-color: #fff;
         color: #323232;
     }
+    .btn-delete{
+        background-color: #323232;
+        color: #ffac41;
+    }
 </style>
 
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Edit Pengguna</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<title>Payroll App BTX1</title>
+		<!-- BOOTSTRAP 4-->
+        <link rel="stylesheet" href="../css/bs1.css">
+        <!-- DATATABLES BS 4-->
+        <link rel="stylesheet" href="../css/bs2_datatables.css" />
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="../css/all.min.css">
+
+        <!-- jQuery -->
+        <script type="text/javascript" src="../js/bs4_jquery.js"></script>
+        <!-- DATATABLES BS 4-->
+        <script src="../js/bs5_datatables.js"></script>
+        <!-- BOOTSTRAP 4-->
+        <script src="../js/bs6_databalesmin.js"></script>
+
 	</head>
-    <body style="background: #323232;;">
+    <body style="background:#323232;">
 		<div class="container">
-			<br/>
-            <span style="color:#fff";>Selamat Datang, <?php echo $sesi['namalengkap'];?></span>
-			<div class="float-right">	
-				<a href="index.php" class="btn btn-kembali btn-md" style="margin-right:1pc;"><span class="fa fa-home"></span> Kembali</a> 
-				<a href="logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-sign-out"></span> Logout</a>
-			</div>		
-			<br/><br/><br/>
 			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-lg-6">
-					<br/>
-					<div class="card">
-						<div class="card-header">
-						<h4 class="card-title">Edit Data Pegawai - <?php echo $hasil['namapegawai'];?></h4>
-						</div>
-						<div class="card-body">
-						<!-- form berfungsi mengirimkan data input 
-						dengan method post ke proses crud dengan paramater get aksi edit -->
-							<form action="functions/crud.php?aksi=edit" method="POST">
-								<div class="form-group">
-									<label>Nama </label>
-									<input type="text" value="<?php echo $hasil['namapegawai'];?>" class="form-control" name="namapegawai">
+				<div class="base_bg" style="align-content: center;width: auto;">
 
-								</div>
-								<div class="form-group">
-									<label>Tempat Lahir</label>
-									<input type="text" value="<?php echo $hasil['tempat_lahir'];?>" class="form-control" name="tempat_lahir">
+                    <?php if(!empty($_SESSION['SUPER'])){?>
+                    <br/>
+                    <div class="session_container">
+                        <span >Selamat Datang, </span>
+                        <span id="usertype" style="color:#fff";><?php echo $sesi['username'];?></span>
+                    </div>
+                    
+                    <a href="../logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-power-off"></span> Logout</a>
+                    <br/><br/>
+                    <br/><br/>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Data Pegawai</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover table-bordered" id="mytable" style="margin-top: 10px">
+                                <thead>
+                                    <tr>
+                                        <th width="50px">No</th>
+                                        <th>Nama Pengguna</th>
+                                        <th>Tempat Lahir</th>
+                                        <th>Tanggal Lahir</th>
+                                        <th>Jenis Kelamin</th>
+                                        <th>Jabatan</th>
+                                        <th>Gaji Pokok</th>
+                                        <th>Tunjangan</th>
+                                        <th>Gaji Total</th>
+                                        <th>Status</th>
+                                        <th style="text-align: center;">Edit Data</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    $no=1;
+                                    $hasil = $proses->tampil_data('pegawai');
+                                    foreach($hasil as $datapegawai){
+                                ?>
+                                    <tr>
+                                        <td><?php echo $no; ?></td>
+                                        <td><?php echo $datapegawai['namapegawai']?></td>
+                                        <td><?php echo $datapegawai['tempat_lahir'];?></td>
+                                        <td><?php echo $datapegawai['tanggal_lahir'];?></td>
+                                        <td><?php echo $datapegawai['jenis_kelamin'];?></td>
+                                        <td><?php echo $datapegawai['jabatan'];?></td>
+                                        <td><?php echo $datapegawai['gapok'];?></td>
+                                        <td><?php echo $datapegawai['tunjangan'];?></td>
+                                        <td><?php echo $datapegawai['gajitotal'];?></td>
+                                        <td><?php echo $datapegawai['status'];?></td>
+                                        <td style="text-align: center;">
 
-								</div>
-								<div class="form-group">
-									<label>Tanggal Lahir</label>
-									<input type="text" value="<?php echo $hasil['tanggal_lahir'];?>" class="form-control" name="tanggal_lahir">
-									
-								</div>
-								<div class="form-group">
-									<label>Jenis Kelamin</label>
-									<input type="text" value="<?php echo $hasil['jenis_kelamin'];?>" class="form-control" name="jenis_kelamin">
+                                            <a href="../review_data.php?php echo $datapegawai['id_pegawai'];?>" class="btn btn-edit btn-md">                                            
+                                            <span class="fa fa-calculator"></span></a>
 
-								</div>
-								<div class="form-group">
-									<label>Jabatan</label>
-									<input type="text" value="<?php echo $hasil['jabatan'];?>" class="form-control" name="jabatan">
-
-								</div>
-								<div class="form-group">
-									<label>Gaji Pokok</label>
-									<input type="text" value="<?php echo $hasil['gapok'];?>" class="form-control" name="gapok">
-
-								</div>
-								<div class="form-group">
-									<label>Tunjangan</label>
-									<input type="text" value="<?php echo $hasil['tunjangan'];?>" class="form-control" name="tunjangan">
-									<input type="hidden" value="<?php echo $hasil['id_pegawai'];?>" class="form-control" name="id_pegawai">
-								</div>
-								<button class="btn btn-updatedata btn-md" name="submit"><i class="fa fa-update"> </i> Setujui Data</button>
-							</form>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-3"></div>
+                                            <a onclick="return confirm('Apakah yakin data akan di hapus?')" href="functions/crud.php?aksi=hapus&hapusid=<?php echo $datapegawai['id_pegawai'];?>" 
+                                            class="btn btn-delete btn-md"><span class="fa fa-trash"></span></a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                    $no++;
+                                    }
+                                ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <?php }else{?>
+                        <br/>
+                        <div class="alert alert-info">
+                            <h3> Maaf Anda Belum Dapat Akses CRUD, Silahkan Login Terlebih Dahulu !</h3>
+                            <hr/>
+                            <p><a href="../login.php">Login Disini</a></p>
+                        </div>
+                    <?php }?>
+			    </div>
 			</div>
 		</div>
+        <script>
+            $('#mytable').dataTable();
+            
+        </script>
 	</body>
 </html>
