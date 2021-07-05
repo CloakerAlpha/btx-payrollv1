@@ -12,6 +12,42 @@
 ?>
 
 <style>
+    .modal{
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    /* Modal Content */
+    .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    }
     .btn-updategaji{
         background-color: #323232;
         color: #fff;
@@ -136,6 +172,12 @@
                                     onkeyup="hitung();">
 
 								</div>
+
+                                <div class="form-group">
+									<label>Status</label>
+									<input type="text" value="<?php echo $hasil['status'];?>" class="form-control" id="status" name="status" >
+
+								</div>
 								
                                 <button class="btn btn-updategaji btn-md" name="create"><i class="fa fa-calculator"> </i> Update Gaji</button>
                                 <input type="button" class="btn btn-printgaji btn-md" value="Cetak Data" onclick="printPage()" />
@@ -146,17 +188,27 @@
 						</div>
 					</div>
 				</div>
+
+                <div id="myModal" class="modal">
+
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <p>OOPS, DATA BELUM SAH. SILAHKAN MENGHUBUNGI SUPERVISOR</p>
+                    </div>
+
+                    </div>
+
 				<div class="col-sm-3"></div>
 			</div>
 		</div>
 	</body>
     <script>
     window.onload = function hitung() {
-      let gapok = document.getElementById('gapok').value;
-      let jamlembur = document.getElementById('jamlembur').value;
-      let tunjangan = document.getElementById('tunjangan').value;
-      let ratelembur = parseInt(gapok)/173;
-      let potonganbpjs = (parseInt(gapok)+parseInt(tunjangan))*0.03;
+        let gapok = document.getElementById('gapok').value;
+        let jamlembur = document.getElementById('jamlembur').value;
+        let tunjangan = document.getElementById('tunjangan').value;
+        let ratelembur = parseInt(gapok)/173;
+        let potonganbpjs = (parseInt(gapok)+parseInt(tunjangan))*0.03;
       if (!isNaN(ratelembur)) {
          document.getElementById('upahlembur').value = Math.round(ratelembur);
       }
@@ -206,11 +258,24 @@
 
     }
 
-    function printPage(jamlembur) {
-        window.print();
-        
+    function printPage() {
+        let status = document.getElementById('status').value;
+        let modal = document.getElementById('myModal');
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                 modal.style.display = "none";
+                }
+
+        if (status=='pending'){
+            modal.style.display = "block";
+        }else{
+            window.print();
+        }
    }
-   function modePrint() {
+
+    function modePrint() {
         document.getElementById("totallembur").style.display = 'none';
         document.getElementById("jam_lembur").style.display = 'none';
         document.getElementById("upahlemburperjam").style.display = 'none';
