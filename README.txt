@@ -1,4 +1,4 @@
--Fitur API untuk fetching data NWNP belum siap
+-Fitur API untuk fetching data NWNP belum siap, namun sudah bekerja dengan cara input data hari nwnp (sudah terdapat perhitungan pada backend)
 -Fitur SuperVisor belum selesai 100%
 
 Konsep SuperVisor : Melihat data pegawai dan melakukan pengubahan status data gaji menjadi "pending/approved"
