@@ -84,15 +84,22 @@
 									<input type="text" value="<?php echo $hasil['gapok'];?>" class="form-control" name="gapok" readonly>
 
 								</div>
-                                <div class="form-group">
-									<label>Status</label>
-									<input type="text" value="<?php echo $hasil['status'];?>" class="form-control" name="status">
-
-								</div>
 								<div class="form-group">
 									<label>Tunjangan</label>
 									<input type="text" value="<?php echo $hasil['tunjangan'];?>" class="form-control" name="tunjangan" readonly>
 									<input type="hidden" value="<?php echo $hasil['id_pegawai'];?>" class="form-control" name="id_pegawai">
+								</div>
+
+								<div class="form-group">
+									<label>Gaji Total</label>
+									<input type="text" value="<?php echo $hasil['gajitotal'];?>" class="form-control" name="gajitotal" readonly>
+
+								</div>
+
+								<div class="form-group">
+									<label>Status</label>
+									<input type="text" value="<?php echo $hasil['status'];?>" class="form-control" name="status">
+
 								</div>
 								<button class="btn btn-updatedata btn-md" name="create"><i class="fa fa-edit"> </i> Update Data</button>
 							</form>
