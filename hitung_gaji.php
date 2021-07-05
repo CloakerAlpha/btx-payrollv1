@@ -178,7 +178,7 @@
 
                                 <div class="form-group">
 									<label>Status</label>
-									<input type="text" value="<?php echo $hasil['status'];?>" class="form-control" id="status" name="status" >
+									<input type="text" value="<?php echo $hasil['status'];?>" class="form-control" id="status" name="status" readonly>
 
 								</div>
 								
