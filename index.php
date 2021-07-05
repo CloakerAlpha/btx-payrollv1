@@ -49,10 +49,11 @@
 
                     <?php if(!empty($_SESSION['ADMIN'])){?>
                     <br/>
-                    <span style="color:#fff";>Selamat Datang, <?php echo $sesi['username'];?></span>
+                    <span style="color:#fff";>Selamat Datang, </span>
+                    <span id="usertype" style="color:#fff";><?php echo $sesi['username'];?></span>
                     <a href="logout.php" class="btn btn-logout btn-md float-right"><span class="fa fa-power-off"></span> Logout</a>
                     <br/><br/>
-                    <a href="tambah.php" class="btn btn-tambah btn-md"><span class="fa fa-plus"></span> Tambah</a>
+                    <a href="tambah.php" class="btn btn-tambah btn-md" id="btn-tambah"><span class="fa fa-plus"></span> Tambah</a>
                     <br/><br/>
                     <div class="card">
                         <div class="card-header">
@@ -124,6 +125,17 @@
 		</div>
         <script>
             $('#mytable').dataTable();
+            tipe ='aaaa';
+            window.onload = function checkuser() {
+                let tipe = document.getElementById("usertype").innerText;
+                console.log(tipe);
+                if (tipe == 'admin'){
+                    document.getElementById("btn-tambah").style.display = '';
+                } else{
+                    document.getElementById("btn-tambah").style.display = 'none';
+                }
+            };
+            
         </script>
 	</body>
 </html>
