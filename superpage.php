@@ -26,8 +26,8 @@
         padding: 10px;
         border-radius: 10px;
         margin: 10px;
-        background-color: #fff;
-        color: #323232;
+        background-color: #323232;
+        color: #fff;
     }
 </style>
 

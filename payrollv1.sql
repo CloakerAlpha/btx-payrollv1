@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2021 at 08:27 AM
+-- Generation Time: Jul 05, 2021 at 05:31 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -65,8 +65,8 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `namapegawai`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `jabatan`, `gapok`, `tunjangan`, `status`, `gajitotal`) VALUES
-(10, 'Ali De', 'Lamongan', '2029-08-19', 'L', 'BE', 500000, 500000, 'pending', 972890),
-(11, 'Akhmad W', 'Bojonegoro', '2029-08-19', 'L', 'FE', 6000000, 300000, 'pending', 6457820),
+(10, 'Ali De', 'Lamongan', '2029-08-19', 'P', 'BE', 500000, 500000, 'approved', 956224),
+(11, 'Akhmad W', 'Bojonegoro', '2029-08-19', 'L', 'FE', 6000000, 300000, 'approved', 6457820),
 (12, 'Arif R', 'Tuban', '2029-08-19', 'L', 'FE', 6000000, 500000, 'pending', 6139682),
 (13, 'Sheila A. F.', 'Surabaya', '2029-08-19', 'P', 'FE', 6000000, 500000, 'pending', 6339682),
 (14, 'Asia S.', 'Bojonegoro', '2029-08-19', 'P', 'FE', 9000000, 300000, 'pending', 9073023),
@@ -134,7 +134,7 @@ ALTER TABLE `db_absensi`
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_pegawai` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `staff_admin`
