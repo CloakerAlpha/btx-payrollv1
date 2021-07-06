@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2021 at 05:31 PM
+-- Generation Time: Jul 06, 2021 at 04:28 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -38,8 +38,17 @@ CREATE TABLE `db_absensi` (
 --
 
 INSERT INTO `db_absensi` (`no_index`, `namapegawai`, `jumlah_harikerja`) VALUES
-(1, 'Ali D', 22),
-(2, 'Asia S.', 20);
+(1, 'Ali De', 22),
+(2, 'Akhmad W', 20),
+(11, 'Arif R', 20),
+(12, 'Sheila A. F.', 20),
+(13, 'Asia S.', 22),
+(14, 'Ratu R.', 20),
+(15, 'Andi R.', 22),
+(16, 'Cahyadi A.', 22),
+(17, 'Werkudara W.', 22),
+(18, 'Gilang W.', 22),
+(19, 'Afiudan', 22);
 
 -- --------------------------------------------------------
 
@@ -65,7 +74,7 @@ CREATE TABLE `pegawai` (
 --
 
 INSERT INTO `pegawai` (`id_pegawai`, `namapegawai`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `jabatan`, `gapok`, `tunjangan`, `status`, `gajitotal`) VALUES
-(10, 'Ali De', 'Lamongan', '2029-08-19', 'P', 'BE', 500000, 500000, 'approved', 956224),
+(10, 'Ali De', 'Lamongan', '2029-08-19', 'P', 'BE', 500000, 500000, 'pending', 956224),
 (11, 'Akhmad W', 'Bojonegoro', '2029-08-19', 'L', 'FE', 6000000, 300000, 'approved', 6457820),
 (12, 'Arif R', 'Tuban', '2029-08-19', 'L', 'FE', 6000000, 500000, 'pending', 6139682),
 (13, 'Sheila A. F.', 'Surabaya', '2029-08-19', 'P', 'FE', 6000000, 500000, 'pending', 6339682),
@@ -128,7 +137,7 @@ ALTER TABLE `staff_admin`
 -- AUTO_INCREMENT for table `db_absensi`
 --
 ALTER TABLE `db_absensi`
-  MODIFY `no_index` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `no_index` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
